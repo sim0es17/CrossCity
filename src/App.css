@@ -1,0 +1,92 @@
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  display: flex; justify-content: center; align-items: center;
+}
+
+#root {
+  display: flex; justify-content: center; align-items: center;
+  width: 100vw; height: 100vh;
+}
+
+.game-container { display: flex; flex-direction: column; align-items: center; }
+
+.hud {
+  width: 400px; background: #222; color: #edaf11;
+  font-family: 'Courier New', Courier, monospace;
+  border-bottom: 3px solid #edaf11;
+  box-sizing: border-box;
+}
+
+.hud-top { display: flex; justify-content: space-between; padding: 8px 20px; font-weight: bold; }
+
+.time-bar-container { width: 100%; height: 6px; background: #444; }
+.time-bar-fill { height: 100%; background: #edaf11; transition: width 0.2s linear; }
+
+.game-world {
+  width: 400px; height: 600px;
+  background-color: #34495e;
+  position: relative; border: 4px solid #444;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+
+.sidewalk { width: 100%; flex: 1; background-color: #27ae60; border-bottom: 1px solid #2ecc71; }
+.road-lane { width: 100%; flex: 1; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); }
+
+.player {
+  position: absolute; font-size: 32px; z-index: 50;
+  display: flex; justify-content: center; align-items: center;
+  width: 40px; height: 40px; transition: all 0.1s ease-out;
+}
+
+.menu-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: center; z-index: 100; color: white; text-align: center;
+  padding: 20px; box-sizing: border-box;
+}
+
+.menu-overlay h1 { color: #edaf11; font-size: 2.5rem; margin: 0; }
+.subtitle { font-weight: bold; margin-bottom: 20px; color: #ccc; }
+
+.info-box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px; border-radius: 8px; border: 1px solid #edaf11;
+  font-size: 0.9rem; margin-bottom: 25px;
+}
+
+.start-button {
+  padding: 12px 35px; font-size: 1.2rem; background-color: #edaf11;
+  border: none; border-radius: 5px; cursor: pointer; font-weight: bold;
+}
+
+.credits { font-size: 10px; margin-top: 30px; opacity: 0.5; }
+.car {
+  position: absolute;
+  z-index: 40; /* Fica abaixo do jogador (z-index 50) mas acima da estrada */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Animação simples quando perdes vida  */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+  animation: shake 0.5s;
+  background-color: rgba(255, 0, 0, 0.2); /* Flash vermelho */
+}
