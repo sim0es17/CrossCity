@@ -1,3 +1,4 @@
+/* Configuração da página e centralização do jogo */
 html, body {
   margin: 0; padding: 0;
   width: 100%; height: 100%;
@@ -13,6 +14,7 @@ html, body {
 
 .game-container { display: flex; flex-direction: column; align-items: center; }
 
+/* Barra de informações superior (Heads-Up Display) */
 .hud {
   width: 400px; background: #222; color: #edaf11;
   font-family: 'Courier New', Courier, monospace;
@@ -22,9 +24,11 @@ html, body {
 
 .hud-top { display: flex; justify-content: space-between; padding: 8px 20px; font-weight: bold; }
 
+/* Barra de tempo visual */
 .time-bar-container { width: 100%; height: 6px; background: #444; }
 .time-bar-fill { height: 100%; background: #edaf11; transition: width 0.2s linear; }
 
+/* Contentor principal do mundo do jogo */
 .game-world {
   width: 400px; height: 600px;
   background-color: #34495e;
@@ -32,15 +36,18 @@ html, body {
   overflow: hidden; display: flex; flex-direction: column;
 }
 
+/* Definição visual das faixas de relva e estrada */
 .sidewalk { width: 100%; flex: 1; background-color: #27ae60; border-bottom: 1px solid #2ecc71; }
 .road-lane { width: 100%; flex: 1; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); }
 
+/* Estilo do jogador (Bicicleta) */
 .player {
   position: absolute; font-size: 32px; z-index: 50;
   display: flex; justify-content: center; align-items: center;
   width: 40px; height: 40px; transition: all 0.1s ease-out;
 }
 
+/* Camada de sobreposição para menus (Início, Pausa, Fim) */
 .menu-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-color: rgba(0, 0, 0, 0.95);
@@ -64,17 +71,18 @@ html, body {
 }
 
 .credits { font-size: 10px; margin-top: 30px; opacity: 0.5; }
+
+/* Estilo dos obstáculos (Carros) */
 .car {
   position: absolute;
-  z-index: 40; /* Fica abaixo do jogador (z-index 50) mas acima da estrada */
+  z-index: 40; 
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Animação simples quando perdes vida  */
+/* Animação de vibração para quando o jogador colide */
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -88,5 +96,10 @@ html, body {
 
 .shake {
   animation: shake 0.5s;
-  background-color: rgba(255, 0, 0, 0.2); /* Flash vermelho */
+}
+
+/* Efeito visual para o menu de pausa */
+.pause-overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(4px);
 }
